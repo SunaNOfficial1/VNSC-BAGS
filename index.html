@@ -1,59 +1,255 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VNSC Bag Store | Viqarunnisa Noon School & College Bag</title>
-  <meta name="description" content="Order your Viqarunnisa Noon School & College bag. Price ৳600.">
+  <meta name="description" content="Order your Viqarunnisa Noon School & College bag for ৳600.">
+
   <style>
-    :root { --pink:#b42363; --dark:#20202a; --soft:#fff4f8; --border:#ead5df; }
+    :root {
+      --pink: #b42363;
+      --dark: #20202a;
+      --soft: #fff4f8;
+      --border: #ead5df;
+    }
+
     * { box-sizing: border-box; }
-    body { margin:0; font-family:Arial,Helvetica,sans-serif; color:var(--dark); background:#fff8fb; line-height:1.55; }
-    .wrap { max-width:760px; margin:0 auto; padding:18px; }
-    header { text-align:center; padding:18px 10px 8px; }
-    .brand { color:var(--pink); font-weight:800; letter-spacing:1.5px; font-size:14px; }
-    h1 { font-size:clamp(26px,5vw,38px); margin:8px 0; line-height:1.15; }
-    .subtitle { margin:0 auto 18px; color:#5e5360; max-width:520px; }
-    .product { background:white; border:1px solid var(--border); border-radius:20px; padding:16px; box-shadow:0 8px 28px #74264a12; }
-    .product img { display:block; width:100%; max-height:520px; object-fit:contain; border-radius:12px; background:#fff; }
-    .price-row { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; padding:14px 2px 4px; }
-    .price { font-size:28px; font-weight:800; color:var(--pink); }
-    .tag { background:var(--soft); color:var(--pink); border-radius:999px; padding:6px 11px; font-size:13px; font-weight:700; }
-    .actions { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:16px 0 22px; }
-    .btn { display:inline-block; text-align:center; text-decoration:none; border:0; border-radius:12px; padding:13px 8px; font-weight:700; font-size:15px; cursor:pointer; }
-    .primary { background:var(--pink); color:white; }
-    .whatsapp { background:#168b50; color:white; }
-    .call { background:#252532; color:white; }
-    section { background:#fff; border:1px solid var(--border); border-radius:18px; padding:20px; margin:18px 0; }
-    h2 { margin:0 0 6px; font-size:23px; }
-    .hint { margin:0 0 18px; color:#6d6270; font-size:14px; }
-    label { display:block; font-weight:700; margin:14px 0 6px; }
-    input, textarea, select { width:100%; border:1px solid #d9cbd2; border-radius:10px; padding:12px; font:inherit; background:#fff; }
-    input:focus, textarea:focus, select:focus { outline:2px solid #f0b6d0; border-color:var(--pink); }
-    .payment-options { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-    .payment-choice { border:1px solid var(--border); border-radius:12px; padding:12px; display:flex; gap:8px; align-items:flex-start; font-weight:600; cursor:pointer; }
-    .payment-choice input { width:auto; margin-top:5px; }
-    .pay-info { background:var(--soft); border-radius:12px; padding:14px; margin-top:16px; }
-    .pay-info p { margin:5px 0; }
-    .ref { font-weight:800; color:var(--pink); letter-spacing:.5px; }
-    .warning { background:#fff6e8; border:1px solid #f0d4a8; color:#6c4711; border-radius:12px; padding:14px; font-size:14px; margin:16px 0; }
-    .submit { width:100%; margin-top:14px; font-size:16px; }
-    footer { text-align:center; color:#776b73; font-size:13px; padding:16px 4px 28px; }
-    @media (max-width:520px) { .actions { grid-template-columns:1fr; } .payment-options { grid-template-columns:1fr; } .wrap { padding:12px; } section { padding:16px; } }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--dark);
+      background: #fff8fb;
+      line-height: 1.55;
+    }
+
+    .wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 18px;
+    }
+
+    header {
+      text-align: center;
+      padding: 18px 10px 8px;
+    }
+
+    .brand {
+      color: var(--pink);
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      font-size: 14px;
+    }
+
+    h1 {
+      font-size: clamp(26px, 5vw, 38px);
+      margin: 8px 0;
+      line-height: 1.15;
+    }
+
+    .subtitle {
+      margin: 0 auto 18px;
+      color: #5e5360;
+      max-width: 520px;
+    }
+
+    .product {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 16px;
+      box-shadow: 0 8px 28px #74264a12;
+    }
+
+    .product img {
+      display: block;
+      width: 100%;
+      max-height: 520px;
+      object-fit: contain;
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding: 14px 2px 4px;
+    }
+
+    .price {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--pink);
+    }
+
+    .tag {
+      background: var(--soft);
+      color: var(--pink);
+      border-radius: 999px;
+      padding: 6px 11px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 16px 0 22px;
+    }
+
+    .btn {
+      display: inline-block;
+      text-align: center;
+      text-decoration: none;
+      border: 0;
+      border-radius: 12px;
+      padding: 13px 8px;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .primary { background: var(--pink); color: white; }
+    .whatsapp { background: #168b50; color: white; }
+    .call { background: #252532; color: white; }
+
+    section {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px;
+      margin: 18px 0;
+    }
+
+    h2 { margin: 0 0 6px; font-size: 23px; }
+
+    .hint {
+      margin: 0 0 18px;
+      color: #6d6270;
+      font-size: 14px;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      margin: 14px 0 6px;
+    }
+
+    input, textarea {
+      width: 100%;
+      border: 1px solid #d9cbd2;
+      border-radius: 10px;
+      padding: 12px;
+      font: inherit;
+      background: #fff;
+    }
+
+    input:focus, textarea:focus {
+      outline: 2px solid #f0b6d0;
+      border-color: var(--pink);
+    }
+
+    .payment-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .payment-choice {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .payment-choice input {
+      width: auto;
+      margin: 0;
+    }
+
+    .pay-info {
+      background: var(--soft);
+      border-radius: 12px;
+      padding: 14px;
+      margin-top: 16px;
+    }
+
+    .pay-info p { margin: 5px 0; }
+
+    .ref {
+      font-weight: 800;
+      color: var(--pink);
+      letter-spacing: .5px;
+    }
+
+    .warning {
+      background: #fff6e8;
+      border: 1px solid #f0d4a8;
+      color: #6c4711;
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 14px;
+      margin: 16px 0;
+    }
+
+    .submit {
+      width: 100%;
+      margin-top: 14px;
+      font-size: 16px;
+    }
+
+    #status {
+      margin-top: 14px;
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+
+    footer {
+      text-align: center;
+      color: #776b73;
+      font-size: 13px;
+      padding: 16px 4px 28px;
+    }
+
+    @media (max-width: 520px) {
+      .actions, .payment-options { grid-template-columns: 1fr; }
+      .wrap { padding: 12px; }
+      section { padding: 16px; }
+    }
   </style>
 </head>
+
 <body>
   <main class="wrap">
     <header>
       <div class="brand">VNSC BAG STORE</div>
       <h1>Viqarunnisa Noon School &amp; College Bag</h1>
-      <p class="subtitle">A smart everyday bag for students. Place your order using the form below.</p>
+      <p class="subtitle">
+        A smart everyday bag for students. Place your order using the form below.
+      </p>
     </header>
 
     <div class="product">
-      <!-- IMPORTANT: Name your uploaded bag photo bag.jpg, or change "bag.jpg" below to its exact repository filename. -->
-      <img src="bag.jpg" alt="Viqarunnisa Noon School & College bag" onerror="this.style.display='none';document.getElementById('image-help').style.display='block';">
-      <p id="image-help" style="display:none;background:#fff4f8;padding:12px;border-radius:8px;color:#8b2451;">Your bag photo is not loading. Make sure the photo is in the same repository folder as index.html and that its filename matches <strong>bag.jpg</strong> exactly.</p>
+      <!-- Change bag.jpg to the exact photo filename in your GitHub repository. -->
+      <img
+        src="bag.jpg"
+        alt="Viqarunnisa Noon School and College bag"
+        onerror="this.style.display='none';document.getElementById('image-help').style.display='block';"
+      >
+
+      <p id="image-help" style="display:none;background:#fff4f8;padding:12px;border-radius:8px;color:#8b2451;">
+        The bag photo is not loading. Make sure the photo is in the same repository folder as index.html and that its filename matches bag.jpg exactly.
+      </p>
+
       <div class="price-row">
         <div class="price">৳600</div>
         <div class="tag">School Bag</div>
@@ -68,22 +264,53 @@
 
     <section id="order">
       <h2>Place Your Order</h2>
-      <p class="hint">Please enter all four required details correctly. Your order message will open in WhatsApp for you to send.</p>
+      <p class="hint">
+        Fill in all four required fields. Your order will be submitted to the order service and opened in WhatsApp.
+      </p>
+
       <form id="order-form">
         <label for="fullname">Full Name *</label>
-        <input id="fullname" name="fullname" type="text" autocomplete="name" required placeholder="Enter your full name">
+        <input
+          id="fullname"
+          name="fullname"
+          type="text"
+          autocomplete="name"
+          required
+          placeholder="Enter your full name"
+        >
 
         <label for="phone">Phone Number *</label>
-        <input id="phone" name="phone" type="tel" autocomplete="tel" required placeholder="Enter your phone number">
+        <input
+          id="phone"
+          name="phone"
+          type="tel"
+          autocomplete="tel"
+          required
+          placeholder="Enter your phone number"
+        >
 
         <label>Payment Option *</label>
         <div class="payment-options">
-          <label class="payment-choice"><input type="radio" name="payment" value="Half Pay — ৳300" required> <span>Half Pay — ৳300</span></label>
-          <label class="payment-choice"><input type="radio" name="payment" value="Full Pay — ৳600" required> <span>Full Pay — ৳600</span></label>
+          <label class="payment-choice">
+            <input type="radio" name="payment" value="Half Pay — ৳300" required>
+            <span>Half Pay — ৳300</span>
+          </label>
+
+          <label class="payment-choice">
+            <input type="radio" name="payment" value="Full Pay — ৳600" required>
+            <span>Full Pay — ৳600</span>
+          </label>
         </div>
 
         <label for="address">Full Address *</label>
-        <textarea id="address" name="address" rows="3" autocomplete="street-address" required placeholder="House, road, area, city, and any delivery details"></textarea>
+        <textarea
+          id="address"
+          name="address"
+          rows="3"
+          autocomplete="street-address"
+          required
+          placeholder="House, road, area, city, and delivery details"
+        ></textarea>
 
         <div class="pay-info">
           <p><strong>bKash Send Money:</strong> 01714073205</p>
@@ -92,47 +319,99 @@
           <p>Please include the referral code when sending payment.</p>
         </div>
 
-        <div class="warning"><strong>Important:</strong> Please check all information before submitting. Incorrect information may result in order cancellation. Incorrect information will not be accepted for correction afterward.</div>
+        <div class="warning">
+          <strong>Important:</strong> Please check all information before submitting.
+          Incorrect information may result in order cancellation. Incorrect information
+          will not be accepted for correction afterward.
+        </div>
 
-        <button class="btn primary submit" type="submit">Continue to WhatsApp to Send Order</button>
+        <button class="btn primary submit" type="submit">
+          Submit Order &amp; Open WhatsApp
+        </button>
+
+        <p id="status" role="status" aria-live="polite"></p>
       </form>
     </section>
 
-    <footer>VNSC Bag Store · Please verify your order and payment details before sending.</footer>
+    <footer>
+      VNSC Bag Store · Please verify your order and payment details before sending.
+    </footer>
   </main>
 
   <script>
-    document.getElementById('order-form').addEventListener('submit', function (event) {
+    const SCRIPT_URL =
+      "https://script.google.com/macros/s/AKfycbyVHlGLbWtAjSG3_yqbSopiG-4dOTDOuAqJav8LlluedTqLe87H6XH_SdJJhtSx8M4ymQ/exec";
+
+    const form = document.getElementById("order-form");
+    const statusBox = document.getElementById("status");
+
+    form.addEventListener("submit", async function (event) {
       event.preventDefault();
-      if (!this.reportValidity()) return;
 
-      const fullName = document.getElementById('fullname').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const payment = this.querySelector('input[name="payment"]:checked');
-      const address = document.getElementById('address').value.trim();
+      if (!form.reportValidity()) return;
 
-      if (!fullName || !phone || !payment || !address) {
-        this.reportValidity();
+      const fullName = document.getElementById("fullname").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const address = document.getElementById("address").value.trim();
+      const paymentElement = form.querySelector('input[name="payment"]:checked');
+
+      if (!fullName || !phone || !address || !paymentElement) {
+        statusBox.textContent = "Please complete all required fields.";
         return;
       }
 
-      const message = [
-        'VNSC BAG STORE — NEW ORDER',
-        '',
-        'Product: Viqarunnisa Noon School & College Bag',
-        'Bag Price: ৳600',
-        'Full Name: ' + fullName,
-        'Phone Number: ' + phone,
-        'Payment Option: ' + payment.value,
-        'Full Address: ' + address,
-        '',
-        'bKash Send Money: 01714073205',
-        'Referral Code: VNSC BAGS',
-        '',
-        'I confirm that the information above is correct.'
-      ].join('\n');
+      const payment = paymentElement.value;
 
-      window.open('https://wa.me/8801614073205?text=' + encodeURIComponent(message), '_blank');
+      const orderData = {
+        fullName: fullName,
+        phone: phone,
+        payment: payment,
+        address: address
+      };
+
+      const whatsappMessage = [
+        "VNSC BAG STORE — NEW ORDER",
+        "",
+        "Product: Viqarunnisa Noon School & College Bag",
+        "Bag Price: ৳600",
+        "Full Name: " + fullName,
+        "Phone Number: " + phone,
+        "Payment Option: " + payment,
+        "Full Address: " + address,
+        "",
+        "bKash Send Money: 01714073205",
+        "Referral Code: VNSC BAGS",
+        "",
+        "I confirm that the information above is correct."
+      ].join("\n");
+
+      // Open WhatsApp immediately to reduce popup-blocking risk.
+      window.open(
+        "https://wa.me/8801614073205?text=" +
+          encodeURIComponent(whatsappMessage),
+        "_blank"
+      );
+
+      statusBox.textContent = "Sending your order to the spreadsheet. Please wait...";
+
+      try {
+        // no-cors prevents reading the server response, so this cannot verify
+        // that the spreadsheet actually saved the order.
+        await fetch(SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          },
+          body: JSON.stringify(orderData)
+        });
+
+        statusBox.textContent =
+          "Order request sent. Please press Send in WhatsApp. The store owner must check the Orders sheet to confirm the order was recorded.";
+      } catch (error) {
+        statusBox.textContent =
+          "WhatsApp has opened, but spreadsheet submission may have failed. Please contact the store owner to confirm your order.";
+      }
     });
   </script>
 </body>
