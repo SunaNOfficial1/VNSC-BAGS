@@ -26,9 +26,45 @@
     }
 
     .wrap {
-      max-width: 760px;
+      max-width: 1000px;
       margin: 0 auto;
       padding: 18px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin: 18px 0;
+    }
+
+    .product {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product img {
+      height: 320px;
+      object-fit: contain;
+    }
+
+    .product .price-row { margin-top: auto; }
+
+    .product .btn {
+      width: 100%;
+      margin-top: 12px;
+    }
+
+    .product-name {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 12px 0 0;
+    }
+
+    @media (max-width: 620px) {
+      .products { grid-template-columns: 1fr; }
+      .product img { height: auto; max-height: 420px; }
     }
 
     header {
@@ -232,34 +268,46 @@
   <main class="wrap">
     <header>
       <div class="brand">VNSC BAG STORE</div>
-      <h1>Viqarunnisa Noon School &amp; College Bag</h1>
+      <h1>Viqarunnisa Noon School &amp; College Bags</h1>
       <p class="subtitle">
-        A smart everyday bag for students. Place your order using the form below.
+        Choose your preferred design. Both bags are ৳600. Use the Order Now button below your selected bag.
       </p>
     </header>
 
-    <div class="product">
-      <!-- Change bag.jpg to the exact photo filename in your GitHub repository. -->
-      <img
-        src="Viqarunnisa School Satchel Close-Up.png"
-        alt="Viqarunnisa Noon School and College bag"
-        onerror="this.style.display='none';document.getElementById('image-help').style.display='block';"
-      >
+    <div class="products">
+      <article class="product">
+        <img
+          src="Viqarunnisa School Satchel Close-Up.png"
+          alt="Original Viqarunnisa Noon School and College bag"
+          onerror="this.alt='Original bag photo could not load. Check the image filename in GitHub.';this.style.minHeight='180px';"
+        >
+        <p class="product-name">Original School Bag</p>
+        <div class="price-row">
+          <div class="price">৳600</div>
+          <div class="tag">Original Design</div>
+        </div>
+        <button class="btn primary choose-product" type="button" data-product="Original School Bag">Order Now</button>
+      </article>
 
-      <p id="image-help" style="display:none;background:#fff4f8;padding:12px;border-radius:8px;color:#8b2451;">
-        The bag photo is not loading. Make sure the photo is in the same repository folder as index.html and that its filename matches bag.jpg exactly.
-      </p>
-
-      <div class="price-row">
-        <div class="price">৳600</div>
-        <div class="tag">School Bag</div>
-      </div>
+      <article class="product">
+        <img
+          src="Black Messenger Bag with VNSC Crest.png"
+          alt="Black Viqarunnisa Noon School and College bag with VNSC crest"
+          onerror="this.alt='Black VNSC bag photo could not load. Check the image filename in GitHub.';this.style.minHeight='180px';"
+        >
+        <p class="product-name">Black VNSC School Bag</p>
+        <div class="price-row">
+          <div class="price">৳600</div>
+          <div class="tag">Black Design</div>
+        </div>
+        <button class="btn primary choose-product" type="button" data-product="Black VNSC School Bag">Order Now</button>
+      </article>
     </div>
 
     <div class="actions">
-      <a class="btn primary" href="#order">Order Now</a>
       <a class="btn whatsapp" href="https://wa.me/8801614073205" target="_blank" rel="noopener">WhatsApp</a>
       <a class="btn call" href="tel:+8801614073205">Call</a>
+      <a class="btn primary" href="#order">Place Order Form</a>
     </div>
 
     <section id="order">
@@ -269,6 +317,9 @@
       </p>
 
       <form id="order-form">
+        <label for="selected-product">Selected Bag *</label>
+        <input id="selected-product" name="product" type="text" value="Original School Bag" readonly required>
+
         <label for="fullname">Full Name *</label>
         <input
           id="fullname"
@@ -345,6 +396,14 @@
     const form = document.getElementById("order-form");
     const statusBox = document.getElementById("status");
 
+    document.querySelectorAll(".choose-product").forEach(function (button) {
+      button.addEventListener("click", function () {
+        document.getElementById("selected-product").value = button.dataset.product;
+        document.getElementById("order").scrollIntoView({ behavior: "smooth" });
+        statusBox.textContent = "Selected: " + button.dataset.product + ". Complete the form below.";
+      });
+    });
+
     form.addEventListener("submit", async function (event) {
       event.preventDefault();
 
@@ -353,9 +412,10 @@
       const fullName = document.getElementById("fullname").value.trim();
       const phone = document.getElementById("phone").value.trim();
       const address = document.getElementById("address").value.trim();
+      const product = document.getElementById("selected-product").value.trim();
       const paymentElement = form.querySelector('input[name="payment"]:checked');
 
-      if (!fullName || !phone || !address || !paymentElement) {
+      if (!fullName || !phone || !address || !product || !paymentElement) {
         statusBox.textContent = "Please complete all required fields.";
         return;
       }
@@ -363,6 +423,8 @@
       const payment = paymentElement.value;
 
       const orderData = {
+        product: product,
+        bagPrice: "৳600",
         fullName: fullName,
         phone: phone,
         payment: payment,
@@ -372,7 +434,7 @@
       const whatsappMessage = [
         "VNSC BAG STORE — NEW ORDER",
         "",
-        "Product: Viqarunnisa Noon School & College Bag",
+        "Product: " + product,
         "Bag Price: ৳600",
         "Full Name: " + fullName,
         "Phone Number: " + phone,
